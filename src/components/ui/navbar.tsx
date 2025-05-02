@@ -15,8 +15,8 @@ export default function NavBar() {
 
                 {/* social-profiles */}
                 <div className="flex flex-row gap-x-5">
-                    <FiInstagram size={23} color="#000a"/>
-                    <FiFacebook size={23} color="#000a"/>
+                    <FiInstagram size={23} color="#000a" href="https://www.instagram.com/bishal_ghimire07"/>
+                    <FiFacebook size={23} color="#000a" href="https://www.facebook.com/bishal.ghimire.9404362"/>
                 </div>
 
                 <div className="flex flex-row items-center justify-center gap-x-5 bg-black rounded-4xl px-5 py-1.5">
