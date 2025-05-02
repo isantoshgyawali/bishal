@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import NavBar from "./components/ui/navbar"
 import Layout from "./components/Layout"
 import HomePage from "./components/pages/home"
 import WaitPage from "./components/pages/wait"
