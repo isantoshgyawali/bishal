@@ -1,105 +1,102 @@
-import { useState } from "react"
+import ONE_IMG from "../../assets/contact-one.svg"
+import TWO_IMG from "../../assets/contact-two.svg"
+import THREE_IMG from "../../assets/contact-three.jpg"
+
+interface ConnectPageProps {
+    image: string;
+    title: string;
+    message: string;
+    component: JSX.Element
+}
 
 export default function Connect() {
-    const [fullName, setFullName] = useState('')
-    const [about, setAbout] = useState('')
-    const [email, setEmail] = useState('')
-    const [checked, setChecked] = useState(false)
-
-    const RequestType = () => {
-        const requestType = [
-            "Any Question?",
-            "Project Discussion",
-            "Request Service"
-        ]
-
-        return (
-            requestType.map((item, index) => (
-                <div
-                    key={index}
-                    className={`flex flex-row items-center gap-5 ${(index < (requestType.length - 1)) ? 'border-b border-gray-300 ' : ''} pb-5`}
-                >
-                    <div className="h-7 w-7 rounded-full border-2"></div>
-                    <p className="text-3xl">{item}</p>
+    const ConnectPage: ConnectPageProps[] = [
+        {
+            image: ONE_IMG,
+            title: 'Contact Me',
+            message: "Let's talk about potential collaborations or media oppurtunities",
+            component: (
+                <div className="flex flex-col h-full max-w-96 justify-start py-12 mr-16">
+                    <div className="flex flex-row items-start gap-5 border-b-2 border-b-[#1462A1]/50 mb-5 pb-5 cursor-pointer">
+                        {
+                            true
+                                ? <div className="h-10 aspect-square rounded-full border-2"></div>
+                                : <div className="h-12 w-12 rounded-full"></div>
+                        }
+                        <p className="text-4xl">Any Questions?</p>
+                    </div>
+                    <div className="flex flex-row items-center gap-5 border-b-2 border-b-[#1462A1]/50  mb-5 pb-5 cursor-pointer">
+                        {
+                            true
+                                ? <div className="h-10 aspect-square rounded-full border-2"></div>
+                                : <div className="h-12 w-12 rounded-full"></div>
+                        }
+                        <p className="text-4xl">Project Discussion</p>
+                    </div>
+                    <div className="flex flex-row items-center gap-5 cursor-pointer">
+                        {
+                            true
+                                ? <div className="h-10 aspect-square rounded-full border-2"></div>
+                                : <div className="h-12 w-12 rounded-full"></div>
+                        }
+                        <p className="text-4xl">Request Service</p>
+                    </div>
                 </div>
-            ))
-        )
-    }
-
-    const InformationQuestions = () => {
-        return (
-            <>
-                <input
-                    type="text"
-                    placeholder="Full Name / Company"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="text-3xl border-b border-gray-300 pb-5">
-                </input>
-                <textarea
-                    placeholder="More about yourself"
-                    value={about}
-                    rows={3}
-                    onChange={(e) => setAbout(e.target.value)}
-                    className="text-3xl resize-none">
-                </textarea>
-            </>
-        )
-    }
-
-    const ContactQuestions = () => {
-        return (
-            <>
-                <input
-                    type="text"
-                    placeholder="Share Your Request"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={`text-3xl border-b border-gray-300 pb-5`}>
-                </input>
-
-                <input
-                    type="text"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="text-3xl border-b border-gray-300 pb-5">
-                </input>
-
-                <div className="max-w-md flex flex-row items-start gap-2">
+            )
+        },
+        {
+            image: TWO_IMG,
+            title: 'Little about yourself',
+            message: 'Give us your short Introduction abou you',
+            component: (
+                <div className="flex flex-col h-full max-w-96 justify-start py-12 mr-16">
                     <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={(e) => setChecked(e.target.checked)}
-                        className="mt-0.5 accent-blue-500"
+                        onChange={() => { }}
+                        placeholder="Full Name / Company"
+                        className="py-5 placeholder-black border-b-2 border-b-[#1462A1]/50 text-3xl mb-5"
                     />
-                    <p className="text-xs text-[#1462A1]">
-                        I hereby give my consent to receive emails at the email address provided, and I authorize
-                        communication regarding updates, inquiries, or relevant information.
-                    </p>
+                    <input
+                        multiple
+                        placeholder="More about yourself"
+                        onChange={() => { }}
+                        className="py-5 placeholder-black text-3xl border-b-2 border-b-[#1462A1]/50"
+                    />
                 </div>
-            </>
-        )
-    }
-
-    const ConnectPage = [
-        {
-            label: "01/03", content: RequestType, title: "Connect Me",
-            description: "Let’s talk about potential collaborations or media opportunities!"
+            )
         },
         {
-            label: "02/03", content: InformationQuestions, title: "Little about yourself",
-            description: "Give us short Introduction about you"
+            image: THREE_IMG,
+            title: "I'd Love to Hear From You",
+            message: 'Your thoughts matter leave your email and request here',
+            component: (
+                <div className="flex max-w-96 flex-col h-full items-start justify-start py-12 mr-16">
+                    <div>
+                        <input
+                            onChange={() => { }}
+                            placeholder="Share your Request"
+                            className="py-5 placeholder-black border-b-2 border-b-[#1462A1]/50 text-3xl mb-5"
+                        />
+                        <input
+                            onChange={() => { }}
+                            placeholder="Email Address"
+                            className="py-5 placeholder-black border-b-2 border-b-[#1462A1]/50 text-3xl mb-5"
+                        />
+                    </div>
+                    <div className="flex flex-row items-start gap-3">
+                        <div className="w-10 aspect-square rounded-full border border-[#1462A1] mt-1"></div>
+                        <p className="text-xs text-[#1462A1]">
+                            I hereby give my consent to receive emails at the email address provided, and I
+                            authorize communication regarding updates, inquiries, or relevant information.
+                        </p>
+                    </div>
+                </div>
+            )
         },
-        {
-            label: "03/03", content: ContactQuestions, title: "Something Else",
-            description: "Let’s talk about potential collaborations or media opportunities!"
-        }
     ]
 
     return (
         <div
-            className="w-full h-[80vh] gap-x-10 flex flex-row overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
+            className="w-full flex flex-row overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
             style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none'
@@ -109,19 +106,20 @@ export default function Connect() {
                 ConnectPage.map((item, index) => (
                     <div
                         key={index}
-                        className="p-20 bg-black/5 h-full snap-start flex-shrink-0 min-w-[80vw] rounded-3xl"
+                        className="flex flex-row justify-between p-20 snap-start flex-shrink-0 w-full mx-10 rounded-3xl"
                     >
-                        <div className="flex flex-row w-full justify-between">
-                            <p className="text-8xl text-[#1462A1]">{item.label}</p>
-                            <div className="flex flex-col gap-5">
-                                <item.content />
+                        <div className="flex flex-col justify-center items-start">
+                            <img
+                                src={item.image}
+                                className="h-80 aspect-auto"
+                            />
+                            <div className="mt-10">
+                                <p className="text-[#1462A1] text-2xl mb-3">{item.title}</p>
+                                <p className="underline text-gray-500 text-3xl max-w-md">{item.message}</p>
                             </div>
                         </div>
 
-                        <div className="mt-10">
-                            <p className="text-[#1462A1] text-xl mb-3">{item.title}</p>
-                            <p className="underline text-3xl max-w-md">{item.description}</p>
-                        </div>
+                        {item.component}
                     </div>
                 ))
             }
