@@ -7,21 +7,23 @@ export default function About() {
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
                     <div className="space-y-7">
                         {/* Main Heading */}
-                        <div className="flex flex-row items-end gap-3">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-blue-600">
-                                \ātmānam
+                        <div className="flex flex-col justify-center items-start gap-2">
+                            <p className="text-blue-500 text-xl">:: आत्मानम्  ::</p>
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black/80">
+                                ātmānam /
                             </h1>
-                            <p className="text-gray-600 text-lg">[आत्मानम्]</p>
                         </div>
 
                         {/* Main Description */}
-                        <p className="text-lg md:text-xl text-gray-700 leading-relaxed underline">
-                            capturing the essence of time through my lens, celebrating the beauty of moments that whisper stories of our shared human experience.
+                        <p className="text-sm text-black text-start underline decoration-gray-300">
+                            I am a professional photographer with experience in event photography, street and travel photography,
+                            commercial production, and portraiture. My work focuses on precision in composition, lighting, and timing
+                            to create images that communicate stories effectively and resonate with audiences.
                         </p>
 
                         {/* Quote */}
-                        <blockquote className="text-base text-blue-600/70">
-                            "Every frame tells a story - I master light, composition, and timing to ensure yours becomes unforgettable art that speaks across generations."
+                        <blockquote className="text-xs text-gray-500">
+                            Photography is how I tell stories. I work with light, composition, and timing to ensure each moment I capture becomes art that endures, connecting generations through its emotion.
                         </blockquote>
 
                         {/* Mobile Social Links */}
@@ -41,7 +43,7 @@ export default function About() {
 
                     {/* Right Column - Image */}
                     <div className="relative">
-                        <div 
+                        <div
                             className="absolute -right-5 -top-5 text-9xl font-black text-white z-10 rotate-180"
                             style={{
                                 writingMode: 'vertical-rl',

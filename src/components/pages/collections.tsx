@@ -3,11 +3,13 @@ import STREET_CAPTURES from "../../assets/street-captures.jpg"
 import TRAVEL_AND_LANDSCAPE from "../../assets/travel-and-landscape.jpg"
 import COMMERCIAL_PRODUCTION from "../../assets/commercial-production.jpg"
 import PORTRAIT_AND_LIFESTYLE from "../../assets/portrait-and-lifestyle.jpg"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function Projects() {
+export default function Collections() {
+    const navigate = useNavigate()
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-    const projects = [
+    const collections = [
         { number: "001", title: "Event Photography", image: EVENT_PHOTOGRAPHY, translate: "-translate-x-9" },
         { number: "002", title: "Street Captures", image: STREET_CAPTURES, translate: "" },
         { number: "003", title: "Travel & Landscape", image: TRAVEL_AND_LANDSCAPE, translate: "-translate-x-5" },
@@ -18,19 +20,20 @@ export default function Projects() {
     return (
         <div className="p-7 flex flex-row justify-start items-start">
             <div className="flex flex-col [&>p]:text-sm gap-1.5 tracking-wider w-80 mt-24">
-                {projects.map((project, index) => (
+                {collections.map((collection, index) => (
                     <p
                         key={index}
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => navigate(`/collection/${collection.number}`)}
                         className={`cursor-pointer transition-all duration-300 ${hoveredIndex === null
-                            ? "text-black"
+                            ? "text-[#263238]"
                             : hoveredIndex === index
-                                ? "text-black font-bold"
+                                ? "text-[#263238] font-bold"
                                 : "text-gray-500"
                             }`}
                     >
-                        {project.number} &nbsp;&nbsp; {project.title}
+                        {collection.number} &nbsp;&nbsp; {collection.title}
                     </p>
                 ))}
             </div>
@@ -47,19 +50,20 @@ export default function Projects() {
 
                 }}
             >
-                {projects.map((project, index) => (
+                {collections.map((collection, index) => (
                     <img
                         key={index}
-                        src={project.image}
-                        alt={project.title}
+                        src={collection.image}
+                        alt={collection.title}
                         className={
-                            project.translate + " " +
-                            `${hoveredIndex !== null && hoveredIndex !== index ? "!h-[13vh]" : ""}` + " " +
-                            `${hoveredIndex === index ? "!h-[25vh] w-[25rem] !saturate-150" : ""}` + " " +
+                            collection.translate + " " +
+                            `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +
+                            `${hoveredIndex === index ? "!h-[25vh] !saturate-100" : ""}` + " " +
                             `${hoveredIndex !== null ? "!object-center" : ""}`
                         }
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => navigate(`/collection/${collection.number}`)}
                     />
                 ))}
             </div>
