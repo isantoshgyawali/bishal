@@ -4,8 +4,10 @@ import { useLocation } from "react-router-dom"
 export default function NavBar() {
     const location = useLocation();
     const isHome = location.pathname === "/"
+    const isCollectionDetails = location.pathname.startsWith("/collection/")
+
     return (
-        <header className={`w-full ${isHome ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
+        <header className={`w-full ${(isHome || isCollectionDetails) ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
             <FiMenu size={20} color="black" />
             <div className="flex flex-col items-end gap-1 tracking-wider">
                 <a href="https://www.instagram.com/bishal_ghimire07" className="flex flex-row items-center hover:font-semibold gap-2">
