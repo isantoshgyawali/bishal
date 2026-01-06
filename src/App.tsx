@@ -5,6 +5,7 @@ import About from "./components/pages/about"
 import Connect from "./components/pages/connect"
 import Collections from "./components/pages/collections"
 import CollectionDetails from "./components/pages/collectionDetails"
+import Menu from "./components/pages/menu"
 
 export default function App() {
     return (
@@ -15,6 +16,7 @@ export default function App() {
                 <Route path="/collection" element={<Collections />} />
                 <Route path="/collection/:id" element={<CollectionDetails />} />
                 <Route path="/connect" element={<Connect />} />
+                <Route path="/menu" element={<Menu />} />
             </Routes>
         </Layout>
     )

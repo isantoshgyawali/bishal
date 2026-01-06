@@ -3,7 +3,7 @@ import HOME_PAGE_IMG from "../../assets/home-image.png"
 export default function AboutPage() {
     return (
         <div className="h-dvh w-dvw flex bg-[#008080]">
-            <div className="w-60 flex flex-col px-7 pt-20 relative">
+            <div className="w-64 flex flex-col px-7 pt-20 relative">
                 <nav className="flex flex-col gap-3 text-lg tracking-wide">
                     <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-sm">ABOUT</Link>
                     <Link to="/collection" className="text-gray-300 hover:text-white transition-colors text-sm">COLLECTION</Link>
@@ -14,7 +14,7 @@ export default function AboutPage() {
                 </p>
             </div>
 
-            <div className="bg-white mt-5 mr-5 rounded-t-[2rem] flex flex-1 items-center justify-center">
+            <div className="bg-white mt-2 mr-2 rounded-t-[1rem] flex flex-1 items-center justify-center">
                 <img
                     src={HOME_PAGE_IMG}
                     alt="Bishal Ghimire"
