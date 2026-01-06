@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom"
 export default function CollectionDetails() {
     const { id } = useParams()
 
-    const images = import.meta.glob('../../assets/**/', { eager: true, as: 'url' })
+    const images = import.meta.glob('../../assets/portfolio_img/**/', { eager: true, as: 'url' })
     const imageUrls = Object.entries(images)
-        .filter(([path]) => path.includes(`/assets/${id}/`))
+        .filter(([path]) => path.includes(`/assets/portfolio_img/${id}/`))
         .map(([_, url]) => url)
 
     return (

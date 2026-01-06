@@ -27,9 +27,9 @@ export default function Collections() {
                         onMouseLeave={() => setHoveredIndex(null)}
                         onClick={() => navigate(`/collection/${collection.number}`)}
                         className={`cursor-pointer transition-all duration-300 ${hoveredIndex === null
-                            ? "text-[#263238]"
+                            ? "text-gray-500"
                             : hoveredIndex === index
-                                ? "text-[#263238] font-bold"
+                                ? "text-[#008080] font-bold"
                                 : "text-gray-500"
                             }`}
                     >

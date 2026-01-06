@@ -12,11 +12,11 @@ export default function NavBar() {
             <div className="flex flex-col items-end gap-1 tracking-wider">
                 <a href="https://www.instagram.com/bishal_ghimire07" className="flex flex-row items-center hover:font-semibold gap-2">
                     INSTAGRAM
-                    <span className="text-lg text-blue-700">↗</span>
+                    <span className="text-lg text-[#008080]">↗</span>
                 </a>
                 <a href="https://www.facebook.com/bishal.ghimire.9404362" className="flex flex-row hover:font-semibold items-center gap-2">
                     FACEBOOK
-                    <span className="text-lg text-blue-700">↗</span>
+                    <span className="text-lg text-[#008080]">↗</span>
                 </a>
             </div>
         </header >

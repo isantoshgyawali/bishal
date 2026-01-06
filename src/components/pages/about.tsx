@@ -8,8 +8,8 @@ export default function About() {
                     <div className="space-y-7">
                         {/* Main Heading */}
                         <div className="flex flex-col justify-center items-start gap-2">
-                            <p className="text-blue-500 text-xl">:: आत्मानम्  ::</p>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black/80">
+                            <p className="text-[#008080] text-xl">:: आत्मानम्  ::</p>
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                                 ātmānam /
                             </h1>
                         </div>
@@ -60,7 +60,7 @@ export default function About() {
                             />
                         </div>
 
-                        <div className="text-blue-600 text-4xl font-light mt-3 text-center md:text-left">
+                        <div className="text-[#008080] text-4xl font-light mt-3 text-center md:text-left">
                             しゅんかん
                         </div>
                     </div>
