@@ -16,11 +16,11 @@ export default function About() {
 
                         {/* Main Description */}
                         <p className="text-lg md:text-xl text-gray-700 leading-relaxed underline">
-                            I capture the essence of time through my lens, celebrating the beauty of moments that whisper stories of our shared human experience.
+                            capturing the essence of time through my lens, celebrating the beauty of moments that whisper stories of our shared human experience.
                         </p>
 
                         {/* Quote */}
-                        <blockquote className="text-base md:text-lg text-blue-600">
+                        <blockquote className="text-base text-blue-600/70">
                             "Every frame tells a story - I master light, composition, and timing to ensure yours becomes unforgettable art that speaks across generations."
                         </blockquote>
 
@@ -41,9 +41,8 @@ export default function About() {
 
                     {/* Right Column - Image */}
                     <div className="relative">
-                        {/* Year Label */}
                         <div 
-                            className="absolute -right-6 -top-5 text-9xl font-black text-white z-10 rotate-180"
+                            className="absolute -right-5 -top-5 text-9xl font-black text-white z-10 rotate-180"
                             style={{
                                 writingMode: 'vertical-rl',
                                 textOrientation: 'mixed'
@@ -52,8 +51,7 @@ export default function About() {
                             2004
                         </div>
 
-                        {/* Image Container */}
-                        <div className="relative aspect-square bg-gray-300 rounded-4xl overflow-hidden saturate-50 grayscale-100">
+                        <div className="relative aspect-square rounded-4xl overflow-hidden saturate-50 grayscale-25">
                             <img
                                 src={ABOUT_IMAGE}
                                 className="aspect-auto"
