@@ -6,10 +6,10 @@ import PORTRAIT_AND_LIFESTYLE from "../../assets/portrait-and-lifestyle.jpg"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export default function Collections() {
+export default function Portfolio() {
     const navigate = useNavigate()
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-    const collections = [
+    const portfolios = [
         { number: "001", title: "Event Photography", image: EVENT_PHOTOGRAPHY, translate: "-translate-x-9" },
         { number: "002", title: "Street Captures", image: STREET_CAPTURES, translate: "" },
         { number: "003", title: "Travel & Landscape", image: TRAVEL_AND_LANDSCAPE, translate: "-translate-x-5" },
@@ -20,12 +20,12 @@ export default function Collections() {
     return (
         <div className="p-7 flex flex-row justify-start items-start">
             <div className="flex flex-col [&>p]:text-sm gap-1.5 tracking-wider w-80 mt-24">
-                {collections.map((collection, index) => (
+                {portfolios.map((portfolio, index) => (
                     <p
                         key={index}
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        onClick={() => navigate(`/collection/${collection.number}`)}
+                        onClick={() => navigate(`/portfolio/${portfolio.number}`)}
                         className={`cursor-pointer transition-all duration-300 ${hoveredIndex === null
                             ? "text-gray-500"
                             : hoveredIndex === index
@@ -33,7 +33,7 @@ export default function Collections() {
                                 : "text-gray-500"
                             }`}
                     >
-                        {collection.number} &nbsp;&nbsp; {collection.title}
+                        {portfolio.number} &nbsp;&nbsp; {portfolio.title}
                     </p>
                 ))}
             </div>
@@ -50,20 +50,20 @@ export default function Collections() {
 
                 }}
             >
-                {collections.map((collection, index) => (
+                {portfolios.map((portfolio, index) => (
                     <img
                         key={index}
-                        src={collection.image}
-                        alt={collection.title}
+                        src={portfolio.image}
+                        alt={portfolio.title}
                         className={
-                            collection.translate + " " +
+                            portfolio.translate + " " +
                             `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +
                             `${hoveredIndex === index ? "!h-[25vh] !saturate-100" : ""}` + " " +
                             `${hoveredIndex !== null ? "!object-center" : ""}`
                         }
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        onClick={() => navigate(`/collection/${collection.number}`)}
+                        onClick={() => navigate(`/portfolio/${portfolio.number}`)}
                     />
                 ))}
             </div>

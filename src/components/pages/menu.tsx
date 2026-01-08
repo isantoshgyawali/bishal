@@ -9,7 +9,7 @@ export default function Menu() {
     const routes = [
         { path: "/", label: "HOME", number: "01" },
         { path: "/about", label: "ABOUT", number: "02" },
-        { path: "/collection", label: "COLLECTION", number: "03" },
+        { path: "/portfolio", label: "PORTFOLIO", number: "03" },
         { path: "/connect", label: "CONNECT", number: "04" },
     ]
 

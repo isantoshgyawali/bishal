@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import HOME_PAGE_IMG from "../../assets/home-image.png"
+
 export default function AboutPage() {
     return (
         <div className="h-dvh w-dvw flex bg-[#008080]">
             <div className="w-64 flex flex-col px-7 pt-20 relative">
                 <nav className="flex flex-col gap-3 text-lg tracking-wide">
                     <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-sm">ABOUT</Link>
-                    <Link to="/collection" className="text-gray-300 hover:text-white transition-colors text-sm">COLLECTION</Link>
+                    <Link to="/portfolio" className="text-gray-300 hover:text-white transition-colors text-sm">PORTFOLIO</Link>
                     <Link to="/connect" className="text-gray-300 hover:text-white transition-colors text-sm">CONNECT</Link>
                 </nav>
                 <p className="absolute text-white text-6xl font-bold tracking-widest [writing-mode:vertical-lr] rotate-180 -right-2.5 -bottom-2">

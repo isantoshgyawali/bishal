@@ -4,10 +4,10 @@ import { useLocation, Link } from "react-router-dom"
 export default function NavBar() {
     const location = useLocation();
     const isHome = location.pathname === "/"
-    const isCollectionDetails = location.pathname.startsWith("/collection/")
+    const isPortfolioDetails = location.pathname.startsWith("/portfolio/")
 
     return (
-        <header className={`w-full ${(isHome || isCollectionDetails) ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
+        <header className={`w-full ${(isHome || isPortfolioDetails) ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
             <Link to="/menu" className="hover:opacity-70 transition-opacity cursor-pointer">
                 <FiMenu size={20} color="black" />
             </Link>

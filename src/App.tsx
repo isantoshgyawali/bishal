@@ -3,9 +3,9 @@ import Layout from "./components/Layout"
 import HomePage from "./components/pages/home"
 import About from "./components/pages/about"
 import Connect from "./components/pages/connect"
-import Collections from "./components/pages/collections"
-import CollectionDetails from "./components/pages/collectionDetails"
 import Menu from "./components/pages/menu"
+import Portfolio from "./components/pages/portfolio"
+import Details from "./components/pages/details"
 
 export default function App() {
     return (
@@ -13,8 +13,8 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/collection" element={<Collections />} />
-                <Route path="/collection/:id" element={<CollectionDetails />} />
+                <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/portfolio/:id" element={<Details />} />
                 <Route path="/connect" element={<Connect />} />
                 <Route path="/menu" element={<Menu />} />
             </Routes>
