@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import HOME_PAGE_IMG from "../../assets/home-image.png"
+import { BASE_CDN_URL } from "./details"
 
 export default function AboutPage() {
     return (
@@ -17,7 +17,7 @@ export default function AboutPage() {
 
             <div className="bg-white mt-2 mr-2 rounded-t-[1rem] flex flex-1 items-center justify-center">
                 <img
-                    src={HOME_PAGE_IMG}
+                    src={`${BASE_CDN_URL}/assets/home-image.png`}
                     alt="Bishal Ghimire"
                     className="h-full w-auto object-cover mr-10"
                 />

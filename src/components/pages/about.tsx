@@ -1,4 +1,4 @@
-import ABOUT_IMAGE from "../../assets/about-image.jpg"
+import { BASE_CDN_URL } from "./details";
 
 export default function About() {
     return (
@@ -55,7 +55,7 @@ export default function About() {
 
                         <div className="relative aspect-square rounded-4xl overflow-hidden saturate-50 grayscale-25">
                             <img
-                                src={ABOUT_IMAGE}
+                                src={`${BASE_CDN_URL}/assets/about-image.jpg`}
                                 className="aspect-auto"
                             />
                         </div>

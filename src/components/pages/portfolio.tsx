@@ -1,20 +1,42 @@
-import EVENT_PHOTOGRAPHY from "../../assets/event-photography.jpg"
-import STREET_CAPTURES from "../../assets/street-captures.jpg"
-import TRAVEL_AND_LANDSCAPE from "../../assets/travel-and-landscape.jpg"
-import COMMERCIAL_PRODUCTION from "../../assets/commercial-production.jpg"
-import PORTRAIT_AND_LIFESTYLE from "../../assets/portrait-and-lifestyle.jpg"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { BASE_CDN_URL } from "./details"
 
 export default function Portfolio() {
     const navigate = useNavigate()
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
     const portfolios = [
-        { number: "001", title: "Event Photography", image: EVENT_PHOTOGRAPHY, translate: "-translate-x-9" },
-        { number: "002", title: "Street Captures", image: STREET_CAPTURES, translate: "" },
-        { number: "003", title: "Travel & Landscape", image: TRAVEL_AND_LANDSCAPE, translate: "-translate-x-5" },
-        { number: "004", title: "Commercial Production", image: COMMERCIAL_PRODUCTION, translate: "translate-x-5" },
-        { number: "005", title: "Portrait & Lifestyle", image: PORTRAIT_AND_LIFESTYLE, translate: "-translate-x-12" }
+        {
+            number: "001",
+            title: "Event Photography",
+            image: `${BASE_CDN_URL}/assets/event-photography.jpg`,
+            translate: "-translate-x-9"
+        },
+        {
+            number: "002",
+            title: "Street Captures",
+            image: `${BASE_CDN_URL}/assets/street-captures.jpg`,
+            translate: ""
+        },
+        {
+            number: "003",
+            title: "Travel & Landscape",
+            image: `${BASE_CDN_URL}/assets/travel-and-landscape.jpg`,
+            translate: "-translate-x-5"
+        },
+        {
+            number: "004",
+            title: "Commercial Production",
+            image: `${BASE_CDN_URL}/assets/commercial-production.jpg`,
+            translate: "translate-x-5"
+        },
+        {
+            number: "005",
+            title: "Portrait & Lifestyle",
+            image: `${BASE_CDN_URL}/assets/portrait-and-lifestyle.jpg`,
+            translate: "-translate-x-12"
+        }
     ]
 
     return (

@@ -2,13 +2,13 @@ import { LuMoveLeft } from "react-icons/lu";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+export const BASE_CDN_URL = "https://cdn.jsdelivr.net/gh/isantoshgyawali/bg_assets@master";
 export default function Details() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [images, setImages] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const BASE_CDN_URL = "https://cdn.jsdelivr.net/gh/isantoshgyawali/bg_assets@master";
     useEffect(() => {
         async function loadImages() {
             try {

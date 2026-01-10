@@ -1,8 +1,6 @@
-import ONE_IMG from "../../assets/contact-one.svg"
-import TWO_IMG from "../../assets/contact-two.svg"
-import THREE_IMG from "../../assets/contact-three.jpg"
 import { useState, useRef } from "react"
 import { FiCornerDownRight, FiCheckCircle } from "react-icons/fi"
+import { BASE_CDN_URL } from "./details";
 
 interface FormData {
     selectedOption: string;
@@ -65,7 +63,9 @@ export default function Connect() {
 
     const ConnectPage = [
         {
-            image: ONE_IMG,
+
+
+            image: `${BASE_CDN_URL}/assets/contact-one.svg`,
             title: 'Contact Me',
             message: "Let's talk about potential collaborations or media opportunities",
             component: (
@@ -107,7 +107,7 @@ export default function Connect() {
             )
         },
         {
-            image: TWO_IMG,
+            image: `${BASE_CDN_URL}/assets/contact-two.svg`,
             title: 'Little about yourself',
             message: 'Give us your short Introduction about you',
             component: (
@@ -149,7 +149,7 @@ export default function Connect() {
             )
         },
         {
-            image: THREE_IMG,
+            image: `${BASE_CDN_URL}/assets/contact-three.jpg`,
             title: "I'd Love to Hear From You",
             message: 'Your thoughts matter leave your email and request here',
             component: (
