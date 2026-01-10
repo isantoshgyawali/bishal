@@ -1,29 +1,43 @@
 import { LuMoveLeft } from "react-icons/lu";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Details() {
-    const { id } = useParams(); // id = 001, 002, 003, 004, 005
+    const { id } = useParams();
     const navigate = useNavigate();
+    const [images, setImages] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    // Base CDN URL
-    const BASE_CDN_URL = "https://cdn.jsdelivr.net/gh/YOUR_USERNAME/REPO_NAME@main";
+    const BASE_CDN_URL = "https://cdn.jsdelivr.net/gh/isantoshgyawali/bg_assets@master";
+    useEffect(() => {
+        async function loadImages() {
+            try {
+                const res = await fetch(`${BASE_CDN_URL}/${id}/gallery.json`);
+                const data = await res.json();
+                setImages(data.images);
+            } catch (err) {
+                console.error("Failed to load gallery", err);
+            } finally {
+                setLoading(false);
+            }
+        }
 
-    // Construct list of image URLs dynamically
-    // Assuming images are named 1.webp, 2.webp, 3.webp ... adjust if needed
-    const TOTAL_IMAGES = 20; // or dynamically fetch if you have a gallery.json
-    const imageUrls = Array.from({ length: TOTAL_IMAGES }, (_, i) =>
-        `${BASE_CDN_URL}/${id}/${i + 1}.webp`
-    );
+        loadImages();
+    }, [id]);
+
+    if (loading) {
+        return <div className="p-7 text-gray-500">Loading gallery…</div>;
+    }
 
     return (
         <div className="p-7 overflow-auto h-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                {imageUrls.map((url, index) => (
+                {images.map((name, index) => (
                     <img
                         key={index}
-                        src={url}
+                        src={`${BASE_CDN_URL}/${id}/${name}`}
                         alt={`Gallery image ${index + 1}`}
-                        className="w-full h-auto object-cover rounded-md shadow-sm transition-transform duration-300 hover:scale-105"
+                        className="w-full h-auto object-cover shadow-sm transition-transform duration-300"
                     />
                 ))}
             </div>
@@ -35,7 +49,7 @@ export default function Details() {
                 <LuMoveLeft
                     size={22}
                     color="white"
-                    className="transition-transform duration-300 ease-in-out group-hover:-translate-x-2"
+                    className="transition-transform duration-300 ease-in-out group-hover:-translate-x-1"
                 />
                 <p className="text-white font-semibold text-lg transition-all duration-300 group-hover:tracking-wider">
                     Back
@@ -44,4 +58,3 @@ export default function Details() {
         </div>
     );
 }
-
