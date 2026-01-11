@@ -13,7 +13,7 @@ export default function NavBar() {
 
     return (
         <>
-            <header className={`w-full ${(isHome || isPortfolioDetails) ? "fixed lg:hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
+            <header className={`w-full ${isHome ? "fixed lg:hidden" : ""} ${isPortfolioDetails ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
                 <button
                     onClick={() => setMenuOpen(true)}
                     className="hover:opacity-70 hover:rotate-x-180 duration-500 transition-all cursor-pointer"

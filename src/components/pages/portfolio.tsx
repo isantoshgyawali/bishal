@@ -11,7 +11,7 @@ export default function Portfolio() {
             number: "001",
             title: "Event Photography",
             image: `${BASE_CDN_URL}/001/main.webp`,
-            translate: "-translate-x-9"
+            translate: "md:-translate-x-9"
         },
         {
             number: "002",
@@ -23,25 +23,25 @@ export default function Portfolio() {
             number: "003",
             title: "Travel & Landscape",
             image: `${BASE_CDN_URL}/003/main.webp`,
-            translate: "-translate-x-5"
+            translate: "md:-translate-x-5"
         },
         {
             number: "004",
             title: "Commercial Production",
             image: `${BASE_CDN_URL}/004/main.webp`,
-            translate: "translate-x-5"
+            translate: "md:translate-x-5"
         },
         {
             number: "005",
             title: "Portrait & Lifestyle",
             image: `${BASE_CDN_URL}/005/main.webp`,
-            translate: "-translate-x-12"
+            translate: "md:-translate-x-12"
         }
     ]
 
     return (
-        <div className="p-7 flex flex-row justify-start items-start">
-            <div className="flex flex-col [&>p]:text-sm gap-1.5 tracking-wider p-5">
+        <div className="p-3 md:p-7 flex flex-row justify-start items-start">
+            <div className="hidden lg:flex flex-col [&>p]:text-sm gap-1.5 tracking-wider p-5">
                 {portfolios.map((portfolio, index) => (
                     <p
                         key={index}
@@ -61,33 +61,33 @@ export default function Portfolio() {
             </div>
             <div
                 className={`
-                    flex flex-col group ml-auto mr-auto w-fit gap-1
+                    flex flex-col group ml-auto mr-auto w-fit gap-2 md:gap-1
 
                     ${/* Unhovered state for every child image*/ true}
-                    [&>img]:w-[23rem] [&>img]:h-[15vh] 
-                    [&>img]:object-cover [&>img]:object-bottom [&>img]:saturate-0 
+                    [&>img]:w-[23rem] [&>img]:h-[13vh] md:[&>img]:h-[15vh] 
+                    [&>img]:object-cover md:[&>img]:object-bottom md:[&>img]:saturate-0 
                     [&>img]:transition-all [&>img]:duration-[1000ms] [&>img]:cursor-pointer
                 `}
-                style={{
-
-                }}
             >
                 {portfolios.map((portfolio, index) => (
-                    <img
-                        key={index}
-                        src={portfolio.image}
-                        alt={portfolio.title}
-                        loading="eager"
-                        className={
-                            portfolio.translate + " " +
-                            `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +
-                            `${hoveredIndex === index ? "!h-[25vh] !saturate-100" : ""}` + " " +
-                            `${hoveredIndex !== null ? "!object-center" : ""}`
-                        }
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
-                        onClick={() => navigate(`/portfolio/${portfolio.number}`)}
-                    />
+                    <>
+                        <p className={`text-[#008080] flex md:hidden text-xs ${index % 2 === 0 ? "self-start" : "self-end"}`}>{portfolio.number} {portfolio.title}</p>
+                        <img
+                            key={index}
+                            src={portfolio.image}
+                            alt={portfolio.title}
+                            loading="eager"
+                            className={
+                                portfolio.translate + " " +
+                                `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +
+                                `${hoveredIndex === index ? "!h-[25vh] !saturate-100" : ""}` + " " +
+                                `${hoveredIndex !== null ? "!object-center" : ""}`
+                            }
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                            onClick={() => navigate(`/portfolio/${portfolio.number}`)}
+                        />
+                    </>
                 ))}
             </div>
         </div >
