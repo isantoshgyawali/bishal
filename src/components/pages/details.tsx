@@ -1,11 +1,14 @@
 import { LuMoveLeft } from "react-icons/lu";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 
 export const BASE_CDN_URL = "https://cdn.jsdelivr.net/gh/isantoshgyawali/bg_assets@master";
+
 export default function Details() {
     const { id } = useParams();
     const navigate = useNavigate();
+
     const [images, setImages] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -21,27 +24,40 @@ export default function Details() {
                 setLoading(false);
             }
         }
-
         loadImages();
     }, [id]);
+
+    const breakpointCols = {
+        default: 3,
+        1536: 3,
+        1280: 3,
+        1024: 3,
+        768: 2,
+        640: 1
+    };
 
     if (loading) {
         return <div className="p-7 text-gray-500">Loading gallery…</div>;
     }
 
     return (
-        <div className="p-7 overflow-auto h-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        <div className="p-2 overflow-auto h-full">
+            <Masonry
+                breakpointCols={breakpointCols}
+                className="flex -ml-2 w-auto"               // -ml-2 compensates gutter
+                columnClassName="pl-2 space-y-2"            // gutter + vertical spacing
+            >
                 {images.map((name, index) => (
-                    <img
-                        key={index}
-                        src={`${BASE_CDN_URL}/${id}/${name}`}
-                        alt={`Gallery image ${index + 1}`}
-                        className="w-full h-auto object-cover shadow-sm transition-transform duration-300"
-                        loading="lazy"
-                    />
+                    <div key={index} className="break-inside-avoid">
+                        <img
+                            src={`${BASE_CDN_URL}/${id}/${name}`}
+                            alt={`Gallery image ${index + 1}`}
+                            className="w-full h-auto object-cover"
+                            loading="lazy"
+                        />
+                    </div>
                 ))}
-            </div>
+            </Masonry>
 
             <div
                 className="fixed bottom-5 right-5 flex items-center gap-2 px-5 py-2 bg-[#008080] rounded-full cursor-pointer hover:opacity-90 transition-all group shadow-lg"

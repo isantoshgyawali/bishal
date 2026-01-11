@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { FiMenu } from "react-icons/fi"
 import { useLocation } from "react-router-dom"
 import Menu from "../pages/menu";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
 
 export default function NavBar() {
     const location = useLocation();
@@ -16,9 +15,9 @@ export default function NavBar() {
             <header className={`w-full ${(isHome || isPortfolioDetails) ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
                 <button
                     onClick={() => setMenuOpen(true)}
-                    className="hover:opacity-70 transition-opacity cursor-pointer"
+                    className="hover:opacity-70 hover:rotate-x-180 duration-500 transition-all cursor-pointer"
                 >
-                    <BiMenuAltLeft size={24} color="black" />
+                    <HiOutlineMenuAlt4 size={24} color="black" />
                 </button>
 
                 <div className="flex flex-col items-end gap-1 tracking-wider">

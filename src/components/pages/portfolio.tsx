@@ -41,7 +41,7 @@ export default function Portfolio() {
 
     return (
         <div className="p-7 flex flex-row justify-start items-start">
-            <div className="flex flex-col [&>p]:text-sm gap-1.5 tracking-wider w-80 mt-24">
+            <div className="flex flex-col [&>p]:text-sm gap-1.5 tracking-wider p-5">
                 {portfolios.map((portfolio, index) => (
                     <p
                         key={index}
