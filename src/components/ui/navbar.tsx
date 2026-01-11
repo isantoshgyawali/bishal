@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom"
 import Menu from "../pages/menu";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export default function NavBar() {
     const location = useLocation();
@@ -12,7 +13,7 @@ export default function NavBar() {
 
     return (
         <>
-            <header className={`w-full ${(isHome || isPortfolioDetails) ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
+            <header className={`w-full ${(isHome || isPortfolioDetails) ? "fixed lg:hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
                 <button
                     onClick={() => setMenuOpen(true)}
                     className="hover:opacity-70 hover:rotate-x-180 duration-500 transition-all cursor-pointer"
@@ -27,7 +28,7 @@ export default function NavBar() {
                         target="_blank"
                     >
                         INSTAGRAM
-                        <span className="text-lg text-[#008080]">↗</span>
+                        <FiArrowUpRight color="#008080" size={18} />
                     </a>
                     <a
                         href="https://www.facebook.com/bishal.ghimire.9404362"
@@ -35,7 +36,7 @@ export default function NavBar() {
                         target="_blank"
                     >
                         FACEBOOK
-                        <span className="text-lg text-[#008080]">↗</span>
+                        <FiArrowUpRight color="#008080" size={18} />
                     </a>
                 </div>
             </header >
