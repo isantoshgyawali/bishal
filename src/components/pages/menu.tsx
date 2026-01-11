@@ -2,7 +2,11 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { FiX } from "react-icons/fi"
 
-export default function Menu() {
+type MenuProps = {
+    onClose: () => void
+}
+
+export default function Menu({ onClose }: MenuProps) {
     const [hoveredRoute, setHoveredRoute] = useState<string | null>(null)
     const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
 
@@ -17,7 +21,7 @@ export default function Menu() {
         {
             name: "INSTAGRAM",
             url: "https://www.instagram.com/bishal.arw/",
-            handle: "@bishal_ghimire07"
+            handle: "@bisha.arw"
         },
         {
             name: "FACEBOOK",
@@ -27,26 +31,20 @@ export default function Menu() {
     ]
 
     return (
-        <div className="fixed inset-0 bg-[#008080] flex flex-col items-center justify-center overflow-hidden">
-            <Link
-                to="/"
+        <div className="fixed inset-0 bg-[#008080] z-50 flex flex-col items-center justify-center overflow-hidden">
+            <button
                 className="absolute top-7 right-7 text-white/60 hover:text-white transition-all duration-300 hover:rotate-90 z-50"
+                onClick={onClose}
             >
                 <FiX size={32} strokeWidth={1.5} />
-            </Link>
+            </button>
 
-            {/* Decorative Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 -left-32 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-            </div>
-
-            {/* Main Navigation */}
             <nav className="w-full relative z-10 flex flex-col items-center justify-center gap-4">
                 {routes.map((route) => (
                     <Link
                         key={route.path}
                         to={route.path}
+                        onClick={onClose}
                         onMouseEnter={() => setHoveredRoute(route.path)}
                         onMouseLeave={() => setHoveredRoute(null)}
                         className="group relative flex flex-col items-center"

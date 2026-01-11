@@ -10,31 +10,31 @@ export default function Portfolio() {
         {
             number: "001",
             title: "Event Photography",
-            image: `${BASE_CDN_URL}/assets/event-photography.jpg`,
+            image: `${BASE_CDN_URL}/001/main.webp`,
             translate: "-translate-x-9"
         },
         {
             number: "002",
             title: "Street Captures",
-            image: `${BASE_CDN_URL}/assets/street-captures.jpg`,
+            image: `${BASE_CDN_URL}/002/main.webp`,
             translate: ""
         },
         {
             number: "003",
             title: "Travel & Landscape",
-            image: `${BASE_CDN_URL}/assets/travel-and-landscape.jpg`,
+            image: `${BASE_CDN_URL}/003/main.webp`,
             translate: "-translate-x-5"
         },
         {
             number: "004",
             title: "Commercial Production",
-            image: `${BASE_CDN_URL}/assets/commercial-production.jpg`,
+            image: `${BASE_CDN_URL}/004/main.webp`,
             translate: "translate-x-5"
         },
         {
             number: "005",
             title: "Portrait & Lifestyle",
-            image: `${BASE_CDN_URL}/assets/portrait-and-lifestyle.jpg`,
+            image: `${BASE_CDN_URL}/005/main.webp`,
             translate: "-translate-x-12"
         }
     ]
@@ -77,6 +77,7 @@ export default function Portfolio() {
                         key={index}
                         src={portfolio.image}
                         alt={portfolio.title}
+                        loading="eager"
                         className={
                             portfolio.translate + " " +
                             `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +

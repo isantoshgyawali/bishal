@@ -17,17 +17,26 @@ export default function AboutPage() {
 
             <div className="bg-white mt-2 mr-2 rounded-t-[1rem] flex flex-1 items-center justify-center">
                 <img
+                    loading="eager"
                     src={`${BASE_CDN_URL}/assets/home-image.png`}
                     alt="Bishal Ghimire"
                     className="h-full w-auto object-cover mr-10"
                 />
 
                 <div className="absolute bottom-5 right-12 flex flex-col items-end gap-3 text-black text-lg tracking-wider">
-                    <a href="https://www.instagram.com/bishal_ghimire07" className="flex items-center hover:font-semibold gap-2">
+                    <a
+                        href="https://www.instagram.com/bishal.arw/"
+                        className="flex items-center hover:font-semibold gap-2"
+                        target="_blank"
+                    >
                         INSTAGRAM
                         <span className="text-lg text-[#008080]">↗</span>
                     </a>
-                    <a href="" className="flex items-center hover:font-semibold gap-2">
+                    <a
+                        href="https://www.facebook.com/bishal.ghimire.9404362"
+                        className="flex items-center hover:font-semibold gap-2"
+                        target="_blank"
+                    >
                         FACEBOOK
                         <span className="text-lg text-[#008080]">↗</span>
                     </a>

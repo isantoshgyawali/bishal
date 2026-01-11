@@ -219,10 +219,11 @@ export default function Connect() {
                 ConnectPage.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-row justify-between p-20 snap-start flex-shrink-0 w-full mx-10 rounded-3xl"
+                        className="flex flex-row justify-between px-20 py-10 snap-start flex-shrink-0 w-full"
                     >
                         <div className="flex flex-col justify-center items-start">
                             <img
+                                loading="eager"
                                 src={item.image}
                                 className="h-80 aspect-auto"
                                 alt={item.title}

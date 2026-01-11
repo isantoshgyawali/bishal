@@ -3,15 +3,12 @@ import { BASE_CDN_URL } from "./details";
 export default function About() {
     return (
         <div className="">
-            <main className="px-6 md:px-16 lg:px-24 py-10">
+            <main className="px-6 md:px-16 lg:px-24 py-7">
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
                     <div className="space-y-7">
                         {/* Main Heading */}
                         <div className="flex flex-col justify-center items-start gap-2">
-                            <p className="text-[#008080] text-xl">:: आत्मानम्  ::</p>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                                ātmānam /
-                            </h1>
+                            <p className="text-[#008080] text-3xl">:: आत्मानम्  ::</p>
                         </div>
 
                         {/* Main Description */}
@@ -55,6 +52,7 @@ export default function About() {
 
                         <div className="relative aspect-square rounded-4xl overflow-hidden saturate-50 grayscale-25">
                             <img
+                                loading="eager"
                                 src={`${BASE_CDN_URL}/assets/about-image.jpg`}
                                 className="aspect-auto"
                             />

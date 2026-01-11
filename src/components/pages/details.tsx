@@ -38,6 +38,7 @@ export default function Details() {
                         src={`${BASE_CDN_URL}/${id}/${name}`}
                         alt={`Gallery image ${index + 1}`}
                         className="w-full h-auto object-cover shadow-sm transition-transform duration-300"
+                        loading="lazy"
                     />
                 ))}
             </div>
