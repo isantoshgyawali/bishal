@@ -19,7 +19,7 @@ export default function AboutPage() {
             <div className="bg-white mt-2 mr-2 ml-2 lg:ml-0 rounded-t-[1rem] flex flex-1 items-center justify-center">
                 <img
                     loading="eager"
-                    src={`${BASE_CDN_URL}/assets/home-image.png`}
+                    src={`${BASE_CDN_URL}/home-image.webp`}
                     alt="Bishal Ghimire"
                     className="self-end min-h-[30rem] max-h-11/12 md:max-h-11/12 lg:max-h-max lg:h-full w-auto object-cover lg:mr-10"
                     decoding="async"

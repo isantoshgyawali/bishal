@@ -1,6 +1,8 @@
 import { useState, useRef } from "react"
 import { FiCornerDownRight, FiCheckCircle } from "react-icons/fi"
-import { BASE_CDN_URL } from "./details";
+import CONTACT_ONE from "../../assets/contact-one.png"
+import CONTACT_TWO from "../../assets/contact-two.png"
+import CONTACT_THREE from "../../assets/contact-three.png"
 
 interface FormData {
     selectedOption: string;
@@ -63,13 +65,12 @@ export default function Connect() {
 
     const ConnectPage = [
         {
-
-
-            image: `${BASE_CDN_URL}/assets/contact-one.svg`,
-            title: 'Contact Me',
-            message: "Let's talk about potential collaborations or media opportunities",
+            // image: `${BASE_CDN_URL}/assets/contact-one.svg`,
+            image: CONTACT_ONE,
+            title: 'Hi there!',
+            message: "What brought you here - question, idea, collaboration?",
             component: (
-                <div className="flex flex-col h-full max-w-96 justify-start py-12 mr-16">
+                <div className="flex flex-col h-full w-full lg:max-w-96 justify-start py-12 mr-16">
                     {OPTIONS.map((opt, index) => {
                         const isSelected = formData.selectedOption === OPTIONS[index];
                         const isDimmed = formData.selectedOption && !isSelected;
@@ -84,10 +85,10 @@ export default function Connect() {
                                     }, 500)
                                 }}
                                 className={`
-                                      flex flex-row items-center gap-5
-                                      border-b-2 border-b-[#008080]/50 mb-5 pb-5
+                                      flex flex-row items-center gap-4
+                                      border-b-1 border-b-[#008080]/50 mb-5 pb-5
                                       cursor-pointer hover:bg-gray-50
-                                      transition-all duration-300 px-2
+                                      transition-all duration-300
                                       ${isDimmed ? "opacity-40" : "opacity-100"}
                                 `}
                             >
@@ -97,8 +98,8 @@ export default function Connect() {
                                 }
 
                                 <p className={`
-                                    text-4xl transition-colors duration-300 
-                                    ${isSelected ? "text-black font-bold" : "text-gray-400"}`}
+                                    text-3xl lg:text-4xl transition-colors duration-300 
+                                    ${isSelected ? "text-black" : "text-gray-400"}`}
                                 >{opt}</p>
                             </div>
                         );
@@ -107,11 +108,12 @@ export default function Connect() {
             )
         },
         {
-            image: `${BASE_CDN_URL}/assets/contact-two.svg`,
-            title: 'Little about yourself',
-            message: 'Give us your short Introduction about you',
+            // image: `${BASE_CDN_URL}/assets/contact-two.svg`,
+            image: CONTACT_TWO,
+            title: 'Little about you',
+            message: 'Few words on your background, interests or current project',
             component: (
-                <div className="flex flex-col h-full max-w-96 justify-start py-12 mr-16">
+                <div className="flex flex-col h-full w-full lg:max-w-96 justify-start py-3 lg:py-10 mr-16">
                     <div className="mb-2">
                         <input
                             value={formData.fullName}
@@ -123,7 +125,7 @@ export default function Connect() {
                                 }
                             }}
                             placeholder="Full Name / Company"
-                            className="py-5 placeholder-gray-500 border-b-2 border-b-[#008080]/50 text-3xl mb-1 w-full outline-none"
+                            className="py-3 placeholder-gray-300 border-b-1 border-b-[#008080]/50 text-3xl mb-1 w-full outline-none"
                             maxLength={20}
                         />
                         <p className="text-xs text-gray-400 text-end">{formData.fullName.length}/20 characters</p>
@@ -139,7 +141,7 @@ export default function Connect() {
                                 }
                             }}
                             placeholder="More about yourself"
-                            className="py-5 placeholder-gray-500 text-3xl border-b-2 border-b-[#008080]/50 w-full outline-none resize-none"
+                            className="py-3 placeholder-gray-300 text-3xl border-b-1 border-b-[#008080]/50 w-full outline-none resize-none"
                             maxLength={50}
                             rows={1}
                         />
@@ -149,11 +151,12 @@ export default function Connect() {
             )
         },
         {
-            image: `${BASE_CDN_URL}/assets/contact-three.jpg`,
-            title: "I'd Love to Hear From You",
-            message: 'Your thoughts matter leave your email and request here',
+            // image: `${BASE_CDN_URL}/assets/contact-three.jpg`,
+            image: CONTACT_THREE,
+            title: "Let's Connect",
+            message: 'Share idea, ask questions or let us know your thoughts here',
             component: (
-                <div className="flex max-w-96 flex-col h-full items-start justify-start py-12 mr-16">
+                <div className="flex w-full lg:max-w-96 flex-col h-full items-start justify-start py-3 lg:py-10 mr-16">
                     <div className="w-full">
                         <input
                             value={formData.request}
@@ -165,7 +168,7 @@ export default function Connect() {
                                 }
                             }}
                             placeholder="Share your Request"
-                            className="py-5 placeholder-gray-500 border-b-2 border-b-[#008080]/50 text-3xl mb-5 w-full outline-none"
+                            className="py-3 placeholder-gray-300 border-b-1 border-b-[#008080]/50 text-3xl mb-3 w-full outline-none"
                         />
                         <div>
                             <input
@@ -174,7 +177,7 @@ export default function Connect() {
                                 onChange={(e) => handleEmailChange(e.target.value)}
                                 placeholder="Email Address"
                                 type="email"
-                                className={`py-5 placeholder-gray-500 border-b-2 ${emailError ? 'border-b-red-500' : 'border-b-[#008080]/50'} text-3xl mb-2 w-full outline-none`}
+                                className={`py-3 placeholder-gray-300 border-b-1 ${emailError ? 'border-b-red-500' : 'border-b-[#008080]/50'} text-3xl mb-2 w-full outline-none`}
                             />
                             {emailError && <p className="text-red-500 text-sm mb-3">{emailError}</p>}
                         </div>
@@ -186,9 +189,9 @@ export default function Connect() {
                         {
                             formData.consent
                                 ? <div className={`w-10 aspect-square`}><FiCheckCircle color="#008080" size={20} className="mt-1" /></div>
-                                : <div className={`w-10 aspect-square rounded-full border border-[#008080] mt-1`}></div>
+                                : <div className={`w-10 aspect-square rounded-full border border-black/50 mt-1`}></div>
                         }
-                        <p className="text-xs text-[#008080]">
+                        <p className={`text-xs ${formData.consent ? "text-[#008080]" : "text-gray-500"}`}>
                             I hereby give my consent to receive emails at the email address provided, and I
                             authorize communication regarding updates, inquiries, or relevant information.
                         </p>
@@ -201,7 +204,7 @@ export default function Connect() {
                             Submit
                         </button>
                     )}
-                </div>
+                </div >
             )
         },
     ]
@@ -219,18 +222,18 @@ export default function Connect() {
                 ConnectPage.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-row justify-between px-20 py-10 snap-start flex-shrink-0 w-full"
+                        className="flex flex-col lg:flex-row justify-between px-7 lg:px-20 lg:py-10 snap-start flex-shrink-0 w-full"
                     >
-                        <div className="flex flex-col justify-center items-start">
+                        <div className="flex flex-col-reverse lg:flex-col justify-center items-start gap-5">
                             <img
                                 loading="eager"
                                 src={item.image}
-                                className="h-80 aspect-auto"
+                                className="h-9/12 max-h-96 min-h-80 lg:h-80 aspect-auto self-center object-contain"
                                 alt={item.title}
                             />
-                            <div className="mt-10">
-                                <p className="text-[#008080] text-2xl mb-3">{item.title}</p>
-                                <p className="underline text-gray-500 text-3xl max-w-md">{item.message}</p>
+                            <div className="flex flex-col gap-2">
+                                <p className="text-black/60 text-5xl font-black">{item.title}</p>
+                                <p className="text-[#008080] text-xs max-w-lg">{item.message}</p>
                             </div>
                         </div>
 

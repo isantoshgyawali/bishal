@@ -38,7 +38,7 @@ export default function About() {
                         <div className="relative aspect-square rounded-4xl overflow-hidden saturate-50 grayscale-25">
                             <img
                                 loading="eager"
-                                src={`${BASE_CDN_URL}/assets/about-image.jpg`}
+                                src={`${BASE_CDN_URL}/about-image.webp`}
                                 className="aspect-auto"
                             />
                         </div>
