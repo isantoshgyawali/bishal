@@ -11,7 +11,7 @@ export default function AboutPage() {
                     <Link to="/portfolio" className="text-gray-300 hover:text-white transition-colors text-sm">PORTFOLIO</Link>
                     <Link to="/connect" className="text-gray-300 hover:text-white transition-colors text-sm">CONNECT</Link>
                 </nav>
-                <p className="absolute text-white text-6xl font-bold tracking-widest [writing-mode:vertical-lr] rotate-180 -right-2.5 -bottom-2">
+                <p className="absolute text-white text-6xl font-black tracking-widest [writing-mode:vertical-lr] rotate-180 -right-2.5 -bottom-2">
                     BISHAL GHIMIRE
                 </p>
             </div>
@@ -21,14 +21,9 @@ export default function AboutPage() {
                     loading="eager"
                     src={`${BASE_CDN_URL}/assets/home-image.png`}
                     alt="Bishal Ghimire"
-                    className="self-end min-h-[25rem] max-h-11/12 md:max-h-11/12 lg:max-h-max lg:h-full w-auto object-cover lg:mr-10"
+                    className="self-end min-h-[30rem] max-h-11/12 md:max-h-11/12 lg:max-h-max lg:h-full w-auto object-cover lg:mr-10"
+                    decoding="async"
                 />
-
-                <div className="flex lg:hidden absolute max-w-72 h-20 self-start mt-40 md:mb-40 md:self-end bg-[#008080] right-0 rounded-xl">
-                    <p className="relative -left-1 -top-2 text-5xl text-white font-bold tracking-widest">
-                        BISHAL GHIMIRE
-                    </p>
-                </div>
 
                 <div className="absolute bottom-5 right-12 hidden lg:flex flex-col items-end gap-3 text-black text-lg tracking-wider">
                     <a

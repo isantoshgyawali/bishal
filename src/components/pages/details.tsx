@@ -54,6 +54,9 @@ export default function Details() {
                             alt={`Gallery image ${index + 1}`}
                             className="w-full h-auto object-cover"
                             loading="lazy"
+                            width={800}
+                            height={1200}
+                            decoding="async"
                         />
                     </div>
                 ))}

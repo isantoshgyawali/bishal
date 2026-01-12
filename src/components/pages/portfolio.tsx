@@ -77,6 +77,7 @@ export default function Portfolio() {
                             src={portfolio.image}
                             alt={portfolio.title}
                             loading="eager"
+                            decoding="async"
                             className={
                                 portfolio.translate + " " +
                                 `${hoveredIndex !== null ? "!h-[13vh] !translate-0" : ""}` + " " +
