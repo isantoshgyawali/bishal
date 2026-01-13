@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { FiCornerDownRight, FiCheckCircle } from "react-icons/fi"
 import CONTACT_ONE from "../../assets/contact-one.png"
 import CONTACT_TWO from "../../assets/contact-two.png"
@@ -18,6 +18,9 @@ export default function Connect() {
     const aboutRef = useRef<HTMLTextAreaElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submissionMessage, setSubmissionMessage] = useState('');
+    const [showToast, setShowToast] = useState(false);
     const [formData, setFormData] = useState<FormData>({
         selectedOption: OPTIONS[0],
         fullName: '',
@@ -29,6 +32,15 @@ export default function Connect() {
     const [emailError, setEmailError] = useState('')
     const [activeIndex, setActiveIndex] = useState(0);
     const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (showToast) {
+            const timer = setTimeout(() => {
+                setShowToast(false);
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [showToast]);
 
 
     const scrollToPage = (pageIndex: number) => {
@@ -64,10 +76,48 @@ export default function Connect() {
         }
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (formData.request && formData.email && validateEmail(formData.email) && formData.consent) {
-            console.log('Form submitted:', formData)
-            alert('Form submitted successfully!')
+            setIsSubmitting(true);
+            setSubmissionMessage('Sending...');
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        access_key: import.meta.env.VITE_FORM_ACCESS_KEY,
+                        subject: `Contact Form - ${formData.selectedOption}`,
+                        from_name: formData.fullName,
+                        replyto: formData.email,
+                        message: `
+                            Option: ${formData.selectedOption}
+                            Name/Company: ${formData.fullName ?? ""}
+                            About: ${formData.aboutYourself ?? ""}
+                            Request: ${formData.request}
+                        `
+                    }),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    setSubmissionMessage('Thanks! We have received your message.');
+                    setShowToast(true);
+                } else {
+                    setSubmissionMessage('Error sending message. Please try again.');
+                    setShowToast(true);
+                    console.error("Web3Forms Error:", result);
+                }
+            } catch (error) {
+                setSubmissionMessage('Network error. Please try again.');
+                setShowToast(true);
+                console.error("Submission Error:", error);
+            } finally {
+                setIsSubmitting(false);
+            }
         }
     }
 
@@ -75,7 +125,6 @@ export default function Connect() {
 
     const ConnectPage = [
         {
-            // image: `${BASE_CDN_URL}/assets/contact-one.svg`,
             image: CONTACT_ONE,
             title: 'Hi there!',
             message: "What brought you here - question, idea, collaboration?",
@@ -118,7 +167,6 @@ export default function Connect() {
             )
         },
         {
-            // image: `${BASE_CDN_URL}/assets/contact-two.svg`,
             image: CONTACT_TWO,
             title: 'Little about you',
             message: 'Few words on your background, interests or current project',
@@ -127,7 +175,7 @@ export default function Connect() {
                     <div className="mb-2">
                         <input
                             value={formData.fullName}
-                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value.slice(0, 20) })}
+                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value.slice(0, 30) })}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
                                     e.preventDefault();
@@ -136,9 +184,9 @@ export default function Connect() {
                             }}
                             placeholder="Full Name / Company"
                             className="py-3 placeholder-gray-300 border-b-1 border-b-[#008080]/50 text-3xl mb-1 w-full outline-none"
-                            maxLength={20}
+                            maxLength={30}
                         />
-                        <p className="text-xs text-gray-400 text-end">{formData.fullName.length}/20 characters</p>
+                        <p className="text-xs text-gray-400 text-end">{formData.fullName.length}/30 characters</p>
                     </div>
                     <div className="mb-2">
                         <textarea
@@ -161,7 +209,6 @@ export default function Connect() {
             )
         },
         {
-            // image: `${BASE_CDN_URL}/assets/contact-three.jpg`,
             image: CONTACT_THREE,
             title: "Let's Connect",
             message: 'Share idea, ask questions or let us know your thoughts here',
@@ -198,8 +245,8 @@ export default function Connect() {
                     >
                         {
                             formData.consent
-                                ? <div className={`w-10 aspect-square`}><FiCheckCircle color="#008080" size={20} className="mt-1" /></div>
-                                : <div className={`w-10 aspect-square rounded-full border border-black/50 mt-1`}></div>
+                                ? <div className={`h-5 aspect-square`}><FiCheckCircle color="#008080" size={20} className="mt-1" /></div>
+                                : <div className={`h-5 aspect-square rounded-full border border-black/50 mt-1`}></div>
                         }
                         <p className={`text-xs ${formData.consent ? "text-[#008080]" : "text-gray-500"}`}>
                             I hereby give my consent to receive emails at the email address provided, and I
@@ -209,16 +256,16 @@ export default function Connect() {
                     {canSubmit && (
                         <button
                             onClick={handleSubmit}
-                            className="mt-5 px-5 self-end py-2 bg-[#008080] hover:bg-[#008080]/70 text-white text-xl transition-colors cursor-pointer"
+                            disabled={isSubmitting}
+                            className={`mt-5 px-5 self-end py-2 bg-[#008080] text-white text-xl transition-colors cursor-pointer ${isSubmitting ? 'opacity-70 cursor-wait' : 'hover:bg-[#008080]/70'}`}
                         >
-                            Submit
+                            {isSubmitting ? 'Sending...' : 'Submit'}
                         </button>
                     )}
                 </div >
             )
         },
     ]
-    {/* Navigation Indicators */ }
 
     return (
         <div
@@ -267,6 +314,22 @@ export default function Connect() {
                     </div>
                 ))
             }
+
+            {/* Toast Notification */}
+            <div className={`
+                fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 
+                transition-all duration-500 ease-in-out
+                ${showToast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
+            `}>
+                <div className={`
+                    px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 
+                    ${submissionMessage.includes('Error') || submissionMessage.includes('Network') ? 'bg-red-500' : 'bg-[#333]'}
+                `}>
+                    <p className="text-white text-sm font-medium tracking-wide">
+                        {submissionMessage}
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }
