@@ -19,7 +19,7 @@ export default function Details() {
                 const data = await res.json();
                 setImages(data.images);
             } catch (err) {
-                console.error("Failed to load gallery", err);
+                // console.error("Failed to load gallery", err);
             } finally {
                 setLoading(false);
             }
