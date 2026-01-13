@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import Menu from "../pages/menu";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { FiArrowUpRight } from "react-icons/fi";
 
 export default function NavBar() {
+    const navigate = useNavigate();
     const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false)
 
@@ -14,12 +15,23 @@ export default function NavBar() {
     return (
         <>
             <header className={`w-full ${isHome ? "fixed lg:hidden" : ""} ${isPortfolioDetails ? "hidden" : ""} flex flex-row justify-between items-start px-7 py-7`}>
-                <button
-                    onClick={() => setMenuOpen(true)}
-                    className="hover:opacity-70 hover:rotate-x-180 duration-500 transition-all cursor-pointer"
-                >
-                    <HiOutlineMenuAlt4 size={24} color="black" />
-                </button>
+                <div className="flex flex-row items-center gap-3">
+                    <button
+                        onClick={() => setMenuOpen(true)}
+                        className="hover:opacity-70 hover:rotate-x-180 duration-500 transition-all cursor-pointer"
+                    >
+                        <HiOutlineMenuAlt4 size={24} color="black" />
+                    </button>
+                    {
+                        isHome &&
+                        <p
+                            className="text-xl flex lg:hidden text-[#008080] font-light tracking-wider"
+                                onClick={() => navigate('/portfolio')}
+                        >
+                            portfolio.
+                        </p>
+                    }
+                </div>
 
                 <div className="flex flex-col items-end gap-1 tracking-wider">
                     <a

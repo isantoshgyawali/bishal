@@ -4,7 +4,7 @@ import { FiArrowUpRight } from "react-icons/fi"
 
 export default function AboutPage() {
     return (
-        <div className="h-dvh w-dvw flex bg-[#008080]">
+        <div className="h-dvh w-dvw flex bg-[#008080] overflow-hidden">
             <div className="w-64 hidden lg:flex flex-col px-7 pt-20 relative">
                 <nav className="flex flex-col gap-3 text-lg tracking-wide">
                     <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-sm">ABOUT</Link>
@@ -21,12 +21,13 @@ export default function AboutPage() {
                     loading="eager"
                     src={`${BASE_CDN_URL}/home-image.webp`}
                     alt="Bishal Ghimire"
-                    className="self-end min-h-[30rem] max-h-11/12 md:max-h-11/12 lg:max-h-max lg:h-full w-auto object-cover lg:mr-10"
+                    className="self-end min-h-[20rem] max-h-11/12 md:max-h-11/12 lg:max-h-max lg:h-full w-auto object-cover lg:mr-10"
                     decoding="async"
                 />
 
                 <div className="absolute bottom-5 right-12 hidden lg:flex flex-col items-end gap-3 text-black text-lg tracking-wider">
                     <a
+                        rel="noopener noreferrer"
                         href="https://www.instagram.com/bishal.arw/"
                         className="flex items-center hover:font-semibold gap-2"
                         target="_blank"
@@ -35,6 +36,7 @@ export default function AboutPage() {
                         <FiArrowUpRight color="#008080" size={18} />
                     </a>
                     <a
+                        rel="noopener noreferrer"
                         href="https://www.facebook.com/bishal.ghimire.9404362"
                         className="flex items-center hover:font-semibold gap-2"
                         target="_blank"

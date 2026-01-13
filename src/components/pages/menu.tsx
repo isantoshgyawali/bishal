@@ -40,7 +40,7 @@ export default function Menu({ onClose }: MenuProps) {
     return (
         <div className="fixed inset-0 bg-[#008080] z-50 flex flex-col items-center justify-center overflow-hidden">
             <button
-                className="absolute top-7 right-7 text-white/60 hover:text-white transition-all duration-300 hover:rotate-90 z-50"
+                className="absolute top-7 right-7 text-white/60 hover:text-white transition-all duration-300 hover:rotate-90 z-50 cursor-pointer"
                 onClick={onClose}
             >
                 <FiX size={32} strokeWidth={1.5} />
@@ -49,7 +49,6 @@ export default function Menu({ onClose }: MenuProps) {
             <nav className="w-full relative z-10 flex flex-col items-center justify-center gap-4">
                 {routes.map((route) => {
                     const isActive = location.pathname === route.path
-                    // Show full features if: hovering this route OR (active AND not hovering any route)
                     const showFullFeatures = hoveredRoute === route.path || (isActive && hoveredRoute === null)
 
                     return (
@@ -73,7 +72,6 @@ export default function Menu({ onClose }: MenuProps) {
                                 {route.number}
                             </span>
 
-                            {/* Route Label */}
                             <span
                                 className={`
                                     text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight

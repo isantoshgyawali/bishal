@@ -11,7 +11,7 @@ export default function Portfolio() {
             number: "001",
             title: "Event Photography",
             image: `${BASE_CDN_URL}/001/main.webp`,
-            translate: "md:-translate-x-9"
+            translate: "lg:-translate-x-9"
         },
         {
             number: "002",
@@ -23,19 +23,19 @@ export default function Portfolio() {
             number: "003",
             title: "Travel & Landscape",
             image: `${BASE_CDN_URL}/003/main.webp`,
-            translate: "md:-translate-x-5"
+            translate: "lg:-translate-x-5"
         },
         {
             number: "004",
             title: "Commercial Production",
             image: `${BASE_CDN_URL}/004/main.webp`,
-            translate: "md:translate-x-5"
+            translate: "lg:translate-x-5"
         },
         {
             number: "005",
             title: "Portrait & Lifestyle",
             image: `${BASE_CDN_URL}/005/main.webp`,
-            translate: "md:-translate-x-12"
+            translate: "lg:-translate-x-12"
         }
     ]
 
@@ -64,14 +64,14 @@ export default function Portfolio() {
                     flex flex-col group ml-auto mr-auto w-fit gap-2 md:gap-1
 
                     ${/* Unhovered state for every child image*/ true}
-                    [&>img]:w-[23rem] [&>img]:h-[13vh] md:[&>img]:h-[15vh] 
-                    [&>img]:object-cover md:[&>img]:object-bottom md:[&>img]:saturate-0 
+                    [&>img]:w-[23rem] [&>img]:h-[13vh] lg:[&>img]:h-[15vh] 
+                    [&>img]:object-cover lg:[&>img]:object-bottom lg:[&>img]:saturate-0 
                     [&>img]:transition-all [&>img]:duration-[1000ms] [&>img]:cursor-pointer
                 `}
             >
                 {portfolios.map((portfolio, index) => (
                     <>
-                        <p className={`text-[#008080] flex md:hidden text-xs ${index % 2 === 0 ? "self-start" : "self-end"}`}>{portfolio.number} {portfolio.title}</p>
+                        <p className={`text-[#008080] flex lg:hidden text-xs ${index % 2 === 0 ? "self-start" : "self-end"}`}>{portfolio.number} {portfolio.title}</p>
                         <img
                             key={index}
                             src={portfolio.image}
