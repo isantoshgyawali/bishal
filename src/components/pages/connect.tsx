@@ -27,6 +27,7 @@ export default function Connect() {
         consent: false
     })
     const [emailError, setEmailError] = useState('')
+    const [activeIndex, setActiveIndex] = useState(0);
     const scrollContainerRef = useRef<HTMLDivElement>(null)
 
 
@@ -39,6 +40,15 @@ export default function Connect() {
             })
         }
     }
+
+    const handleScroll = () => {
+        if (scrollContainerRef.current) {
+            const scrollLeft = scrollContainerRef.current.scrollLeft;
+            const width = scrollContainerRef.current.offsetWidth;
+            const index = Math.round(scrollLeft / width);
+            setActiveIndex(index);
+        }
+    };
 
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -208,10 +218,12 @@ export default function Connect() {
             )
         },
     ]
+    {/* Navigation Indicators */ }
 
     return (
         <div
             ref={scrollContainerRef}
+            onScroll={handleScroll}
             className="w-full flex flex-row overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
             style={{
                 scrollbarWidth: 'none',
@@ -222,13 +234,13 @@ export default function Connect() {
                 ConnectPage.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col lg:flex-row justify-between px-7 lg:px-20 lg:py-10 snap-start flex-shrink-0 w-full"
+                        className="flex flex-col lg:gap-10 lg:flex-row justify-between px-7 lg:px-20 lg:py-10 snap-start flex-shrink-0 w-full"
                     >
                         <div className="flex flex-col-reverse lg:flex-col justify-center items-start gap-5">
                             <img
                                 loading="eager"
                                 src={item.image}
-                                className="h-9/12 max-h-96 min-h-80 lg:h-80 aspect-auto self-center object-contain"
+                                className="h-9/12 max-h-96 min-h-80 lg:h-96 aspect-auto self-center object-contain"
                                 alt={item.title}
                             />
                             <div className="flex flex-col gap-2">
@@ -238,6 +250,20 @@ export default function Connect() {
                         </div>
 
                         {item.component}
+                        <div className="fixed bottom-5 left-0 right-0 flex justify-center items-center gap-3">
+                            {ConnectPage.map((_, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => scrollToPage(index)}
+                                    className={`
+                                        cursor-pointer transition-all duration-400 rounded-full
+                                        ${activeIndex === index
+                                            ? 'bg-[#008080]/50 w-7 h-1.5'
+                                            : 'bg-gray-300 w-1 h-1 hover:bg-gray-400'}
+                                    `}
+                                />
+                            ))}
+                        </div>
                     </div>
                 ))
             }
