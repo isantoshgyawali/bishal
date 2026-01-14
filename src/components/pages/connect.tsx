@@ -106,15 +106,23 @@ export default function Connect() {
                 if (result.success) {
                     setSubmissionMessage('Thanks! We have received your message.');
                     setShowToast(true);
+                    setFormData({
+                        selectedOption: OPTIONS[0],
+                        fullName: '',
+                        aboutYourself: '',
+                        request: '',
+                        email: '',
+                        consent: false
+                    })
                 } else {
                     setSubmissionMessage('Error sending message. Please try again.');
                     setShowToast(true);
-                    // console.error("Web3Forms Error:", result);
+                    console.error("Web3Forms Error:", result);
                 }
             } catch (error) {
                 setSubmissionMessage('Network error. Please try again.');
                 setShowToast(true);
-                // console.error("Submission Error:", error);
+                console.error("Submission Error:", error);
             } finally {
                 setIsSubmitting(false);
             }
