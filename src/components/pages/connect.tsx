@@ -294,6 +294,7 @@ export default function Connect() {
                         <div className="flex flex-col-reverse lg:flex-col justify-center items-start gap-5">
                             <img
                                 loading="eager"
+                                fetchPriority="high"
                                 src={item.image}
                                 className="h-9/12 max-h-96 min-h-80 lg:h-96 aspect-auto self-center object-contain"
                                 alt={item.title}
