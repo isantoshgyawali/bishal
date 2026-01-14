@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react"
 import { FiCornerDownRight, FiCheckCircle } from "react-icons/fi"
-import CONTACT_ONE from "../../assets/contact-one.png"
-import CONTACT_TWO from "../../assets/contact-two.png"
-import CONTACT_THREE from "../../assets/contact-three.png"
+import CONTACT_ONE from "../../assets/contact-one.webp"
+import CONTACT_TWO from "../../assets/contact-two.webp"
+import CONTACT_THREE from "../../assets/contact-three.webp"
 
 interface FormData {
     selectedOption: string;

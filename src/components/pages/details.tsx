@@ -48,14 +48,12 @@ export default function Details() {
                 columnClassName="pl-2 space-y-2"            // gutter + vertical spacing
             >
                 {images.map((name, index) => (
-                    <div key={index} className="break-inside-avoid">
+                    <div key={index} className="break-inside-avoid" >
                         <img
                             src={`${BASE_CDN_URL}/${id}/${name}`}
                             alt={`Gallery image ${index + 1}`}
-                            className="w-full h-auto object-cover"
+                            className="w-full h-auto object-contain"
                             loading="lazy"
-                            width={800}
-                            height={1200}
                             decoding="async"
                         />
                     </div>
