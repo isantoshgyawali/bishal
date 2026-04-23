@@ -311,6 +311,20 @@ export default function Resume() {
                             )}
                         </div>
                     </section>
+
+                    <section id="videos" className="scroll-mt-8 mb-16 mt-10">
+                        <div className="flex items-center gap-4 mb-4">
+                            <h2 className="text-lg tracking-tight font-semibold text-neutral-800 text-center whitespace-nowrap">videos</h2>
+                            <div className="h-px flex-1 bg-neutral-200"></div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {[1, 2, 3, 4].map((i) => (
+                                <div key={i} className="aspect-video bg-neutral-900 rounded-lg overflow-hidden flex items-center justify-center shadow-sm">
+                                    <span className="text-neutral-500 text-sm font-medium">Video Placeholder {i}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
             </div>
 
